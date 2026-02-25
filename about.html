@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about Mangu Mountain Dominican Cuisine - our story, our mission, and our commitment to authentic Dominican flavors in Kissimmee, FL.">
+  <title>About Us | Mangu Mountain Dominican Cuisine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="navbar__brand">Mangu <span>Mountain</span></a>
+      <button class="navbar__toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="navbar__links" role="menubar">
+        <li><a href="index.html" role="menuitem">Home</a></li>
+        <li><a href="about.html" class="active" role="menuitem">About</a></li>
+        <li><a href="menu.html" role="menuitem">Menu</a></li>
+        <li><a href="contact.html" role="menuitem">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero__title">Our <span>Story</span></h1>
+      <p class="hero__subtitle">A family tradition rooted in the flavors of the Dominican Republic, now serving the Kissimmee community.</p>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-content__text">
+          <h2 class="section__title" style="text-align: left; margin-bottom: 1.5rem;">From the Island to Your Table</h2>
+          <p>Mangu Mountain is a family-owned Dominican restaurant based out of Kissimmee, Florida, serving the comfort food we grew up on &mdash; mangu, rice and beans, tostones, beef stew, and all the classic dishes that make Dominican cuisine so special.</p>
+          <p>The restaurant is led by Antonio Paulino, a second-generation Dominican-American chef with a deep connection to his roots and a passion for sharing Dominican food with the world. Growing up in a Dominican household, Antonio learned to cook alongside his family, where every meal was made from scratch and every recipe told a story. Those experiences shaped his belief that Dominican cuisine deserves a wider stage.</p>
+          <p>Antonio's mission with Mangu Mountain is simple: to bring authentic Dominican comfort food to more people and help it gain the recognition it deserves. Every dish on our menu reflects that goal &mdash; traditional recipes prepared with care, real ingredients, and the same love you'd find in a Dominican family kitchen.</p>
+        </div>
+        <div>
+          <img src="img/antonio.jpg" alt="Antonio Paulino, owner and chef of Mangu Mountain" style="border-radius: 12px; width: 100%; height: 500px; object-fit: cover; object-position: top;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">What We Stand For</h2>
+        <p class="section__subtitle">The values that guide everything we do at Mangu Mountain.</p>
+      </div>
+      <div class="values-grid">
+        <div>
+          <div class="value-item__icon" aria-hidden="true">&#10084;&#65039;</div>
+          <h3 class="value-item__title">Family First</h3>
+          <p class="value-item__text">Every guest is treated like family. We believe in creating a welcoming space where everyone feels at home.</p>
+        </div>
+        <div>
+          <div class="value-item__icon" aria-hidden="true">&#127793;</div>
+          <h3 class="value-item__title">Authenticity</h3>
+          <p class="value-item__text">We stay true to traditional Dominican recipes and cooking methods. Our food is honest, flavorful, and genuine.</p>
+        </div>
+        <div>
+          <div class="value-item__icon" aria-hidden="true">&#127758;</div>
+          <h3 class="value-item__title">Community</h3>
+          <p class="value-item__text">We are proud members of the Kissimmee community and committed to giving back through local partnerships and events.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="section section--dark">
+    <div class="container" style="text-align: center; max-width: 750px;">
+      <h2 class="section__title" style="margin-bottom: 1.5rem;">Our Mission</h2>
+      <p style="font-size: 1.15rem; line-height: 1.9; color: var(--color-gray);">To put Dominican cuisine on the map. Antonio Paulino founded Mangu Mountain with the belief that Dominican food deserves to be recognized alongside the world's great culinary traditions. Through every plate we serve, we aim to share that heritage, welcome new fans to the table, and make Kissimmee proud.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">Mangu <span>Mountain</span></div>
+          <p class="footer__desc">Authentic Dominican cuisine in Kissimmee, FL. Bringing the bold, comforting flavors of the Caribbean to Central Florida since day one.</p>
+        </div>
+        <div>
+          <div class="footer__title">Quick Links</div>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__title">Hours</div>
+          <ul class="footer__links">
+            <li>Mon &ndash; Thu: 11am &ndash; 9pm</li>
+            <li>Fri &ndash; Sat: 11am &ndash; 10pm</li>
+            <li>Sunday: 10am &ndash; 8pm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; 2026 Mangu Mountain Dominican Cuisine. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.navbar__toggle');
+    const links = document.querySelector('.navbar__links');
+    toggle.addEventListener('click', () => {
+      const isOpen = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+    });
+  </script>
+
+</body>
+</html>
