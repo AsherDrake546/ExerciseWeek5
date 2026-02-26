@@ -1,0 +1,2 @@
+### Review Requested for Pull Request #1
+The pull request "Add search input to top navbar across all pages" is now marked as ready for review. Please review the changes and merge if everything looks good.
