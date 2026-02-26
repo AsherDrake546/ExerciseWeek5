@@ -2,6 +2,15 @@
 const searchInput = document.getElementById('navbar-search');
 const searchResults = document.getElementById('navbar-search-results');
 
+// Debounce: delays execution until user stops typing for `delay` ms
+function debounce(func, delay) {
+  let timeoutId;
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func(...args), delay);
+  };
+}
+
 // Filter searchData based on query matching name, description, or category/keywords
 function filterSearch(query) {
   const q = query.toLowerCase();
@@ -27,7 +36,9 @@ function displayResults(results) {
       ? item.category
       : 'Page';
 
+    const icon = item.type === 'menu' ? '🍽️' : '📄';
     div.innerHTML = `
+      <span class="result-icon">${icon}</span>
       <span class="result-name">${item.name}</span>
       <span class="result-type">${subtitle}</span>
     `;
@@ -71,8 +82,8 @@ function displayResults(results) {
   });
 }
 
-// Listen for user input and update results in real time
-searchInput.addEventListener('input', () => {
+// Listen for user input and update results in real time (debounced 300ms)
+searchInput.addEventListener('input', debounce(() => {
   const query = searchInput.value.trim();
 
   if (query === '') {
@@ -87,9 +98,14 @@ searchInput.addEventListener('input', () => {
     displayResults(results);
     searchResults.style.display = 'block';
   } else {
-    searchResults.style.display = 'none';
+    searchResults.innerHTML = '';
+    const noResults = document.createElement('div');
+    noResults.textContent = `No results found for "${query}"`;
+    noResults.className = 'no-results-message';
+    searchResults.appendChild(noResults);
+    searchResults.style.display = 'block';
   }
-});
+}, 300));
 
 // Close results when clicking outside the search area
 document.addEventListener('click', (e) => {
