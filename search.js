@@ -37,20 +37,35 @@ function displayResults(results) {
     div.addEventListener('mouseenter', () => { div.style.backgroundColor = '#f5f5f5'; });
     div.addEventListener('mouseleave', () => { div.style.backgroundColor = ''; });
 
-    // Navigate to the item's link and close the dropdown on click
+    // Handle click: scroll to menu item on page, or navigate to page link
     div.addEventListener('click', () => {
-      console.log('Search result clicked:', item.name, '| link:', item.link);
-      if (!item.link) {
-        console.error('Navigation error: item.link is undefined for item:', item.name);
-        return;
+      if (item.type === 'menu') {
+        // If not on menu.html, navigate there first
+        if (!window.location.pathname.includes('menu.html')) {
+          window.location.href = 'menu.html';
+        } else {
+          // Find and scroll to the menu item on current page
+          const menuItem = Array.from(document.querySelectorAll('.menu-item__name'))
+            .find(el => el.textContent.trim() === item.name);
+
+          if (menuItem) {
+            const parent = menuItem.closest('.menu-item');
+
+            // Scroll to the item smoothly
+            parent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Highlight the item briefly
+            parent.style.backgroundColor = '#fff9e6';
+            setTimeout(() => { parent.style.backgroundColor = ''; }, 2000);
+          }
+        }
+      } else {
+        // For pages, navigate normally
+        window.location.href = item.link;
       }
+
       searchResults.style.display = 'none';
       searchInput.value = '';
-      console.log('Navigating to:', item.link);
-      // Brief delay to allow the dropdown to close before navigating
-      setTimeout(() => {
-        window.location.href = item.link;
-      }, 50);
     });
 
     searchResults.appendChild(div);
