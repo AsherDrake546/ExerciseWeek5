@@ -39,9 +39,18 @@ function displayResults(results) {
 
     // Navigate to the item's link and close the dropdown on click
     div.addEventListener('click', () => {
-      window.location.href = item.link;
+      console.log('Search result clicked:', item.name, '| link:', item.link);
+      if (!item.link) {
+        console.error('Navigation error: item.link is undefined for item:', item.name);
+        return;
+      }
       searchResults.style.display = 'none';
       searchInput.value = '';
+      console.log('Navigating to:', item.link);
+      // Brief delay to allow the dropdown to close before navigating
+      setTimeout(() => {
+        window.location.href = item.link;
+      }, 50);
     });
 
     searchResults.appendChild(div);
