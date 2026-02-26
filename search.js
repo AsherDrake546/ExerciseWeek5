@@ -22,14 +22,14 @@ function displayResults(results) {
     const div = document.createElement('div');
     div.className = 'navbar__search-result-item';
 
-    // Determine subtitle: category label for menu items, "Page" for pages
+    // Determine subtitle: category name for menu items, "Page" for pages
     const subtitle = item.type === 'menu'
-      ? item.category + ' item'
+      ? item.category
       : 'Page';
 
     div.innerHTML = `
       <span class="result-name">${item.name}</span>
-      <span class="result-type">${subtitle}</span>
+      <span class="result-type" style="font-size:0.8rem;color:#999;">${subtitle}</span>
     `;
 
     // Apply hover styles inline to keep CSS changes minimal
