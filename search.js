@@ -40,27 +40,26 @@ function displayResults(results) {
     // Handle click: scroll to menu item on page, or navigate to page link
     div.addEventListener('click', () => {
       if (item.type === 'menu') {
-        // If not on menu.html, navigate there first
-        if (!window.location.pathname.includes('menu.html')) {
-          window.location.href = 'menu.html';
-        } else {
-          // Find and scroll to the menu item on current page
-          const menuItem = Array.from(document.querySelectorAll('.menu-item__name'))
+        if (window.location.pathname.includes('menu.html')) {
+          // Already on menu page - find and scroll to item
+          const target = Array.from(document.querySelectorAll('.menu-item__name'))
             .find(el => el.textContent.trim() === item.name);
 
-          if (menuItem) {
-            const parent = menuItem.closest('.menu-item');
+          if (target) {
+            const menuItem = target.closest('.menu-item');
+            menuItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-            // Scroll to the item smoothly
-            parent.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-            // Highlight the item briefly
-            parent.style.backgroundColor = '#fff9e6';
-            setTimeout(() => { parent.style.backgroundColor = ''; }, 2000);
+            // Highlight briefly
+            menuItem.style.backgroundColor = '#fffbeb';
+            setTimeout(() => { menuItem.style.backgroundColor = ''; }, 2000);
           }
+        } else {
+          // Not on menu page - navigate there and store item to scroll to
+          sessionStorage.setItem('scrollToItem', item.name);
+          window.location.href = 'menu.html';
         }
       } else {
-        // For pages, navigate normally
+        // Regular page navigation
         window.location.href = item.link;
       }
 
@@ -104,3 +103,23 @@ const testPollo = filterSearch('pollo');
 console.log('Search test — "pollo":', testPollo.length, 'results', testPollo);
 const testMenu = filterSearch('menu');
 console.log('Search test — "menu":', testMenu.length, 'results', testMenu);
+
+// Handle scrolling to menu item after page navigation
+window.addEventListener('load', () => {
+  const itemToScroll = sessionStorage.getItem('scrollToItem');
+  if (itemToScroll && window.location.pathname.includes('menu.html')) {
+    const target = Array.from(document.querySelectorAll('.menu-item__name'))
+      .find(el => el.textContent.trim() === itemToScroll);
+
+    if (target) {
+      setTimeout(() => {
+        const menuItem = target.closest('.menu-item');
+        menuItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        menuItem.style.backgroundColor = '#fffbeb';
+        setTimeout(() => { menuItem.style.backgroundColor = ''; }, 2000);
+      }, 500);
+    }
+
+    sessionStorage.removeItem('scrollToItem');
+  }
+});
