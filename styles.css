@@ -600,6 +600,19 @@ img {
   display: none;
 }
 
+/* ===== SEARCH RESULTS ===== */
+.result-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.result-type {
+  font-size: 0.75rem;
+  color: #999;
+  font-weight: 400;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 992px) {
   .grid--3,

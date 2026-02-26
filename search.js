@@ -29,7 +29,7 @@ function displayResults(results) {
 
     div.innerHTML = `
       <span class="result-name">${item.name}</span>
-      <span class="result-type" style="font-size:0.8rem;color:#999;">${subtitle}</span>
+      <span class="result-type">${subtitle}</span>
     `;
 
     // Apply hover styles inline to keep CSS changes minimal
