@@ -1,4 +1,40 @@
+.navbar__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .navbar__search-input {
-    border-radius: 25px; /* Updated to a higher border-radius for pill shape */
-    /* Additional styling can be included here if necessary */
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    outline: none;
+    background-color: #fff;
+    color: #333;
+    width: 200px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.navbar__search-input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.navbar__search-input:focus {
+    border-color: #c0392b;
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.2);
+}
+
+.navbar__search-results {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    overflow: hidden;
 }
